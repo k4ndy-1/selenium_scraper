@@ -22,10 +22,10 @@ def get_all_colleges(stream, city):
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
                                   options=options)
 
-    base_url = f"https://www.collegedunia.com/{stream}/{city}-colleges"
-    driver.get(base_url)
+        base_url = f"https://www.collegedunia.com/{stream}/{city}-colleges"
+        driver.get(base_url)
 
-    colleges = []
+        colleges = []
     except Exception as e:
         st.write(f"DEBUG:INIT_DRIVER:ERROR:{e}")
     finally:
