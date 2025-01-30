@@ -12,11 +12,15 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 # Function to get all colleges based on stream and city
 def get_all_colleges(stream, city):
-    driver_path = './chromedriver.exe'  # Replace with your ChromeDriver path
-    service = Service(driver_path)
-    options = Options()
-    options.headless = True  
-    driver = webdriver.Chrome(service=service, options=options)
+    driver = None
+    try:
+        # Using on Local
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--window-size=1920,1200')
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
+                                  options=options)
 
     base_url = f"https://www.collegedunia.com/{stream}/{city}-colleges"
     driver.get(base_url)
