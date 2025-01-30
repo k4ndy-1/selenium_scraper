@@ -26,6 +26,11 @@ def get_all_colleges(stream, city):
     driver.get(base_url)
 
     colleges = []
+    except Exception as e:
+        st.write(f"DEBUG:INIT_DRIVER:ERROR:{e}")
+    finally:
+        if driver is not None: driver.quit()
+    return None
     
     try:
         last_height = driver.execute_script("return document.body.scrollHeight")
