@@ -109,7 +109,7 @@ def main():
             colleges = get_all_colleges(stream, city)
 
             if colleges:
-                df = pd.DataFrame(colleges, columns=["College Name", "City", "Email", "Course Name"])
+                df = pd.DataFrame(colleges, columns=["College Name", "City", "Website", "Course Name"])
                 st.dataframe(df)
 
                 result = append_to_gsheet(df, sheet_url)
